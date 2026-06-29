@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- RESTART POPUP -->
+<div class="overlay" id="restartOverlay">
+  <div class="popup">
+    <p>Restart the quiz from the beginning?</p>
+    <div class="popup-btns">
+      <button class="popup-yes" onclick="doRestart()">Yes, Restart</button>
+      <button class="popup-no"  onclick="closePopup('restartOverlay')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- START SCREEN -->
+<div id="startScreen" class="screen active">
+  <div class="card">
+    <div style="text-align:center;font-size:52px;margin-bottom:10px;">🧠</div>
+    <h1>Quiz Time!</h1>
+    <p>Test your JavaScript knowledge with 10 questions.</p>
+    <div class="badges">
+      <span class="badge">10 Questions</span>
+      <span class="badge">15s each</span>
+      <span class="badge">Score tracked</span>
+    </div>
+    <button class="btn-primary" onclick="startQuiz()">Start Quiz</button>
+    <div id="hsHome" style="text-align:center;font-size:13px;color:#888;margin-top:4px;"></div>
+  </div>
+</div>
+
+<!-- QUIZ SCREEN -->
+<div id="quizScreen" class="screen">
+  <div class="card">
+    <div class="top-row">
+      <span id="qProgress">Question 1 of 10</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="score-badge" id="scoreShow">Score: 0</span>
+        <button class="small-btn" onclick="confirmRestart()">Restart</button>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:10%"></div>
+    </div>
+    <div class="timer">
+      <div class="timer-circle" id="timerEl">15</div>
+    </div>
+    <div class="question" id="questionEl"></div>
+    <div class="options"  id="optionsEl"></div>
+    <div class="bottom-row">
+      <div class="feedback" id="feedbackEl"></div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="skip-btn" id="skipBtn" onclick="skipQuestion()">Skip</button>
+        <button class="next-btn" id="nextBtn" onclick="goNext()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT SCREEN -->
+<div id="resultScreen" class="screen">
+  <div class="card">
+    <div class="result-emoji" id="resultEmoji"></div>
+    <h1 id="resultTitle"></h1>
+    <p id="resultMsg" style="margin-bottom:20px;"></p>
+    <div class="score-box">
+      <div class="big-score"   id="bigScore"></div>
+      <div class="small-score" id="smallScore"></div>
+    </div>
+    <div class="stats">
+      <div class="stat c"><div class="stat-num" id="statC">0</div><div class="stat-label">Correct</div></div>
+      <div class="stat w"><div class="stat-num" id="statW">0</div><div class="stat-label">Wrong</div></div>
+      <div class="stat t"><div class="stat-num" id="statT">0</div><div class="stat-label">Skipped</div></div>
+    </div>
+    <div class="high-note" id="highNote"></div>
+    <button class="btn-primary" onclick="startQuiz()">Play Again</button>
+    <button class="btn-outline" onclick="goHome()">Home</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
